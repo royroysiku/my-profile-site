@@ -25,3 +25,4 @@ build/
 # 환경 변수
 .env
 .env.local
+.claude/settings local.json
