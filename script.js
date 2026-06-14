@@ -1,3 +1,21 @@
+// 사진 로드 실패 시 플레이스홀더 표시
+function initPhotoFallback(imgId, placeholderClass) {
+    const img = document.getElementById(imgId);
+    if (!img) return;
+    img.addEventListener('error', () => {
+        img.style.display = 'none';
+        const placeholder = img.closest('.relative, .profile-photo-wrap, .about-photo-wrap')
+            ?.querySelector('.' + placeholderClass);
+        if (placeholder) {
+            placeholder.classList.remove('hidden');
+            placeholder.style.display = 'flex';
+        }
+    });
+}
+
+initPhotoFallback('profile-img', 'photo-placeholder');
+initPhotoFallback('about-img', 'about-placeholder');
+
 // 네비게이션 스크롤 효과
 const navbar = document.getElementById('navbar');
 const mobileMenu = document.getElementById('mobile-menu');
